@@ -1,0 +1,24 @@
+{
+  "name": "pb-final02-pokemon-soerendci",
+  "version": "1.0.0",
+  "description": "Try to make a simplified version of pokemon!",
+  "main": "index.js",
+  "scripts": {
+    "sass-build": "sass src/scss:src/css",
+		"sass-watch": "sass -w src/scss:src/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FbW-WD-22-D01/pb-final02-pokemon-SoerenDCI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FbW-WD-22-D01/pb-final02-pokemon-SoerenDCI/issues"
+  },
+  "homepage": "https://github.com/FbW-WD-22-D01/pb-final02-pokemon-SoerenDCI#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1"
+  }
+}

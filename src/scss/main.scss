@@ -1,0 +1,313 @@
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "reset";
+@import "variables";
+@import "font";
+@import "layout";
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.hide{
+    position: absolute;
+    visibility: hidden !important;
+    opacity: 0;
+    transition: visibility 250ms ease-in-out, opacity 250ms ease-in-out;
+}
+
+.hide2 {
+    display: none;
+}
+
+.displayArea, .battleArea {
+    height: 60rem;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.displayArea {
+    width: 80%;
+    padding: 4rem;
+    background-image: url(../background/showArea.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    > div {
+        &:first-of-type {
+            h2{
+                text-transform: capitalize;
+                color: wheat;
+                font-size: 2rem;
+            }
+        }
+
+        &:nth-of-type(2) {
+            > div {
+                > figure{
+                    object-fit: contain;
+
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
+        
+        &:last-of-type {
+            p {
+                color: wheat;
+            }
+        }
+    }
+    
+}
+
+.battleArea {
+    width: 90rem;
+    height: 70rem;
+    padding: .5rem;
+    background-color: rgb(70, 70, 70);
+
+
+    .battleBackground {
+        background-image: url(../background/battleArena.png);
+        background-size: cover;
+        height: 80%;
+
+        .battleDiv{
+            padding: 0 4rem;
+            height: 50%;
+
+            figure {
+                height: 70%;
+                width: 30rem;
+    
+                img {
+                    transform: scale(3.5);
+                    transform-origin: bottom;
+                    max-height: 100%;
+                }
+            }
+            
+            &:nth-of-type(1){
+                gap: 25rem;
+            }
+            &:nth-of-type(2){
+                gap: 10rem;
+            }
+
+            .infoContainer {
+                padding: 1rem;
+                width: 30rem;
+                background-color: lightgrey;
+                border: 3px solid rgb(70, 70, 70);
+                box-shadow: inset 0 0 15px rgb(100, 100, 100);
+                border-radius: 25px 5px;
+
+                * {
+                    font-size: 1.5rem;
+                }
+
+                > p {
+                    padding: 0 1rem;
+                }
+
+                .nameContainer {
+                    margin-bottom: 1rem;
+                    padding: 0 1rem;
+                    
+                    p {
+                        font-size: 2rem;
+                        font-weight: bold;
+                    }
+                }
+
+                .hpBar {
+                    display: flex;
+                    background-color: rgb(70, 70, 70);
+                    border-radius: 20px;
+                    padding: .6rem;
+                    gap: 0.75rem;
+                    width: 60%;
+                    height: 3rem;
+
+                    &::before {
+                        color: orange;
+                        content: "HP";
+                    }
+                    
+                    .hpBarBorder{
+                        overflow: hidden;
+                        border: 3px solid white;
+                        border-radius: inherit;
+                        height: 100%;
+                        width: 100%;
+
+                        .hpBarPara {
+                            background-color: green;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .battleTextDiv {
+        height: 20%;
+        border-radius: 4px;
+        border: 5px solid black;
+        box-shadow: inset 0 0 4px 10px rgb(210, 189, 0);
+        background-color: lightgrey;
+
+        .battleText {
+            width: 60%;
+            height: 100%;
+            padding: 2rem;
+            font-size: 3.5rem;
+
+            span {
+                display: block;
+            }
+        }
+
+        .battleBox {
+            padding: 1rem 2rem;
+            height: 100%;
+            border: 10px solid black;
+            box-shadow: inset 0 0 4px 10px orangered; 
+
+            &:first-of-type {
+                width: 60%;
+            }
+
+            &:last-of-type {
+                position: relative;
+                width: 40%;
+
+                .backButton {
+                    font-family: "FontAwesome";
+                    font-size: 3rem;
+                    position: absolute;
+                    bottom: 1.5rem;
+                    right: 2rem;
+                    border: none;
+                    background-color: transparent;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .fightButtons {
+                position: relative;
+                border: none;
+                background-color: transparent;
+                font-size: 3rem;
+
+                &:hover {
+                    cursor: pointer;
+                    &::before {
+                        font-family: "FontAwesome";
+                        position: absolute;
+                        content: "\f0da";
+                        left: -2rem;
+                        bottom: .32rem;
+                    }
+                }
+            }
+
+            .moveButtonDiv {
+                width: 43%;
+                
+                .moveButtons {
+                    text-align: left;
+                }
+            }
+
+            .moveInfoDiv {
+                width: 100%;
+                height: 100%;
+
+                p {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+
+.selection {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+
+    * {
+        font-size: 1.25rem;
+        padding: .25em .5em;
+    }
+}
+
+.attackPKM {
+    font-size: 1.25rem;
+    padding: .25em .5em;
+}
+
+.start {
+    font-size: 2rem;
+    padding: .5em 1em;
+}
+
+.infoText {
+    font-size: 1.2rem;
+}
+
+.loadingscreen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightgray;
+
+    .loading{
+        font-size: 3rem;
+    }
+}
+
+.errorMassageField {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background-color: rgba(100, 100, 100, 0.25);
+
+    > div{
+        background-color: white;
+        padding: 1rem;
+        height: 15rem;
+        width: 25rem;
+    
+        border: 2px solid rgb(70, 70, 70);
+        border-radius: 5px;
+    
+        * {
+            font-size: 3rem;
+            text-align: center;
+        }
+    
+        button {
+            border: none;
+            background-color: lightgrey;
+            border-radius: 25%;
+            padding: .5rem .75rem;
+
+            &:hover {
+                cursor: pointer;
+                background-color: darkgrey;
+            }
+        }
+    }
+}

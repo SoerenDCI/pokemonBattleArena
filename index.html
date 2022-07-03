@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="src/css/main.css">
+        <script src="index.js" defer></script>
+        <title>Pokemon</title>
+    </head>
+    <body id="body" class="flex column center1 center2 gap2">
+        <div id="load" class="loadingscreen flex center1 center2">
+            <h2 class="loading">Is loading, pls wait...</h2>
+        </div>
+        <div id="pokeSelection" class="selection">
+            <select id="yourPokemon" data-pokemon="">
+
+            </select>
+            <button id="choose">Chose</button>
+            <select id="enemyPokemon" data-pokemon="">
+    
+            </select>
+        </div>
+        <div id="battleArena" class="battleArea flex hide"></div>
+        <div id="showArea" class="displayArea flex column"></div>
+        <button id="start" class="start hide">Start battle</button>
+    </body>
+</html>

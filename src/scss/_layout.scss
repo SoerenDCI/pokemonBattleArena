@@ -1,0 +1,85 @@
+body {
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url(../background/showBackground.jpg);
+    background-size: cover;
+    * {
+        @media screen and (max-width: 1419px) {
+            display: none !important; 
+        }
+    }
+
+}
+
+.BattleBack{
+    background-image: url(../background/battleBackground.jpg);
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.gap {
+    gap: 1rem;
+}
+
+.gap2 {
+    gap: 2rem;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.half {
+    width: 50%;
+}
+
+.quarter {
+    width: 25%;
+}
+
+.center1 {
+    justify-content: center;
+}
+
+.center2 {
+    align-items: center;
+}
+
+.fullsize {
+    width: 100%;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.evenly {
+    justify-content: space-evenly;
+}
+
+.around {
+    justify-content: space-around;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.showCaseCon {
+    height: 39rem;
+}

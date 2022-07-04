@@ -125,13 +125,6 @@ async function hpCountdown(move, yourPoke, enemyPoke, attackerId, allTypes) {
         defender = damagedPoke.specialDefense;
     }
 
-    // crit check
-    if(parseFloat((Math.random() * 100).toFixed(2)) < 4.16){
-        crit = 1.5;
-        await typeWriter("Critical Hit!", "");
-        await delay(200);
-    }
-
     // stab check
     if(attacker.type.includes(move.type)){
         stab = 1.5;
@@ -178,6 +171,14 @@ async function hpCountdown(move, yourPoke, enemyPoke, attackerId, allTypes) {
     }else if((type1 * type2) >= 2){
         
         await typeWriter("It's super effective!", "");
+    }
+    
+    // crit check
+    if(parseFloat((Math.random() * 100).toFixed(2)) < 4.16){
+        crit = 1.5;
+        await delay(200);
+        await typeWriter("Critical Hit!", "");
+        await delay(200);
     }
 
     // damage math

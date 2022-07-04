@@ -959,7 +959,7 @@ function createPage(pokemons, allTypes){
             backButton.setAttribute("class", "backButton");
             backButton.setAttribute("id", "backButton");
             // backButton.innerHTML = `<i class="fa-solid fa-caret-right"></i>`
-            backButton.innerHTML = `<p>-></p>`
+            backButton.innerHTML = `>`
             battleBox2.appendChild(backButton);
 
             document.getElementById("backButton").onclick = () => backButtonFunction("What will", `${capitalizeLetters(pokemons[activPoke[0]].name)} do?`);

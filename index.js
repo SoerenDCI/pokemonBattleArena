@@ -368,67 +368,93 @@ async function moveUsage(move, pokemons, activPoke, enemyMove, allTypes) {
 // -------------------------------------------------
 // -------------------------------------------------
 // -------------------------------------------------
-async function getData(url, callback) {
-    const pokeInfo = await fetch(url);
-    const pokeInfoConvert = await pokeInfo.json();
-    const moveInfo = await fetch("https://pokeapi.co/api/v2/move/?offset=0&limit=844");
-    const moveInfoConvert = await moveInfo.json();
-    const typeInfo = await fetch("https://pokeapi.co/api/v2/type/?offset=0&limit=18");
-    const typeInfoConvert = await typeInfo.json();
+async function getData(callback, callback2) {
+    // const pokeInfo = await fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151");
+    // const pokeInfoConvert = await pokeInfo.json();
+    // const moveInfo = await fetch("https://pokeapi.co/api/v2/move/?offset=0&limit=844");
+    // const moveInfoConvert = await moveInfo.json();
+    // const typeInfo = await fetch("https://pokeapi.co/api/v2/type/?offset=0&limit=18");
+    // const typeInfoConvert = await typeInfo.json();
+
+    // const pokeData = {};
+    // const allMoves = {};
+    // const allTypes = {};
+
+    // for (const move of moveInfoConvert.results) {
+
+    //     const singleMove = await fetch(move.url);
+    //     const singleMoveData = await singleMove.json();
+    //     allMoves[singleMoveData.name] = {
+    //         name : singleMoveData.name,
+    //         type: singleMoveData.type.name,
+    //         atkType: singleMoveData.damage_class.name,
+    //         damage: singleMoveData.power,
+    //         powerpoints: singleMoveData.pp,
+    //         accuracy: singleMoveData.accuracy
+    //     }
+
+    //     console.log(move);
+    // }
+
+    // for (const type of typeInfoConvert.results) {
+
+    //     const singleType = await fetch(type.url);
+    //     const singleTypeData = await singleType.json();
+    //     allTypes[singleTypeData.name] = {
+    //         name : singleTypeData.name,
+    //         double: singleTypeData.damage_relations.double_damage_from,
+    //         half: singleTypeData.damage_relations.half_damage_from,
+    //         no: singleTypeData.damage_relations.no_damage_from
+    //     }
+    // }
+
+    // for (const poke of pokeInfoConvert.results) {
+
+    //     const mon = await fetch(poke.url);
+    //     const monData = await mon.json();
+
+    //     const moves = {};
+    //     for(let i = 0; i < monData.moves.length; i++){
+    //         const localName = allMoves[monData.moves[i].move.name];
+    //         if(localName.damage !== null){
+    //             moves[localName.name] = {
+    //                 name : localName.name,
+    //                 type: localName.type,
+    //                 atkType: localName.atkType,
+    //                 damage: localName.damage,
+    //                 powerpoints: localName.powerpoints,
+    //                 accuracy: localName.accuracy
+    //             }
+    //         }
+    //     }
+
+    //     // const hpFormula = ((2 * baseWert + 31) * 50) / 100 + 50 + 10;
+    //     // const statsFormula = ((2 * baseWert + 31) * 50) / 100 + 5;
+
+    //     pokeData[monData.name] = {
+    //         name : monData.name,
+    //         type: typeSplit(monData.types),
+    //         hitpoints: Math.floor(((2 * monData.stats[0].base_stat + 31) * 50) / 100 + 50 + 10),
+    //         attack: Math.floor(((2 * monData.stats[1].base_stat + 31) * 50) / 100 + 5),
+    //         defense: Math.floor(((2 * monData.stats[2].base_stat + 31) * 50) / 100 + 5),
+    //         specialAttack: Math.floor(((2 * monData.stats[3].base_stat + 31) * 50) / 100 + 5),
+    //         specialDefense: Math.floor(((2 * monData.stats[4].base_stat + 31) * 50) / 100 + 5),
+    //         speed: Math.floor(((2 * monData.stats[5].base_stat + 31) * 50) / 100 + 5),
+    //         pokeMoves: moves,
+    //         spriteFront: `src/pokemonSprites/FurretTurret/${capitalizeLetters(monData.name)}.gif`,
+    //         battleSpriteFront: `src/pokemonSprites/front/${monData.id}.gif`,
+    //         battleSpriteBack: `src/pokemonSprites/back/${monData.id}.gif`
+    //     }
+    // }
 
     const pokeData = {};
     const allMoves = {};
     const allTypes = {};
 
-    for (const move of moveInfoConvert.results) {
-
-        const singleMove = await fetch(move.url);
-        const singleMoveData = await singleMove.json();
-        allMoves[singleMoveData.name] = {
-            name : singleMoveData.name,
-            type: singleMoveData.type.name,
-            atkType: singleMoveData.damage_class.name,
-            damage: singleMoveData.power,
-            powerpoints: singleMoveData.pp,
-            accuracy: singleMoveData.accuracy
-        }
-    }
-
-    for (const type of typeInfoConvert.results) {
-
-        const singleType = await fetch(type.url);
-        const singleTypeData = await singleType.json();
-        allTypes[singleTypeData.name] = {
-            name : singleTypeData.name,
-            double: singleTypeData.damage_relations.double_damage_from,
-            half: singleTypeData.damage_relations.half_damage_from,
-            no: singleTypeData.damage_relations.no_damage_from
-        }
-    }
-
-    for (const poke of pokeInfoConvert.results) {
-
-        const mon = await fetch(poke.url);
+    for(let i = 1; i <= 151; i++){
+        const mon = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
         const monData = await mon.json();
-
-        const moves = {};
-        for(let i = 0; i < monData.moves.length; i++){
-            const localName = allMoves[monData.moves[i].move.name];
-            if(localName.damage !== null){
-                moves[localName.name] = {
-                    name : localName.name,
-                    type: localName.type,
-                    atkType: localName.atkType,
-                    damage: localName.damage,
-                    powerpoints: localName.powerpoints,
-                    accuracy: localName.accuracy
-                }
-            }
-        }
-
-        // const hpFormula = ((2 * baseWert + 31) * 50) / 100 + 50 + 10;
-        // const statsFormula = ((2 * baseWert + 31) * 50) / 100 + 5;
-
+        // console.log(monData);
         pokeData[monData.name] = {
             name : monData.name,
             type: typeSplit(monData.types),
@@ -438,22 +464,73 @@ async function getData(url, callback) {
             specialAttack: Math.floor(((2 * monData.stats[3].base_stat + 31) * 50) / 100 + 5),
             specialDefense: Math.floor(((2 * monData.stats[4].base_stat + 31) * 50) / 100 + 5),
             speed: Math.floor(((2 * monData.stats[5].base_stat + 31) * 50) / 100 + 5),
-            pokeMoves: moves,
+            allMoves: monData.moves.map(value => value.move.name),
+            pokeMoves: {},
             spriteFront: `src/pokemonSprites/FurretTurret/${capitalizeLetters(monData.name)}.gif`,
             battleSpriteFront: `src/pokemonSprites/front/${monData.id}.gif`,
             battleSpriteBack: `src/pokemonSprites/back/${monData.id}.gif`
         }
-    }
+        
+        for(let i = 0; i < monData.moves.length; i++){
+
+            if(!allMoves[monData.moves[i].move.name]){
+                const move = await fetch(monData.moves[i].move.url)
+                allMoves[monData.moves[i].move.name] = await move.json();
+            }
+        }
     
-    callback(pokeData, allTypes);
+    }
+
+    for (let i = 1; i <= 18; i++) {
+
+        const singleType = await fetch(`https://pokeapi.co/api/v2/type/${i}`);
+        const singleTypeData = await singleType.json();
+        allTypes[singleTypeData.name] = {
+            name : singleTypeData.name,
+            double: singleTypeData.damage_relations.double_damage_from,
+            half: singleTypeData.damage_relations.half_damage_from,
+            no: singleTypeData.damage_relations.no_damage_from
+        }
+    }
+
+    const finishedPokeData = await callback2(pokeData, allMoves);
+
+    callback(finishedPokeData, allTypes);
 }
 
-getData("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151", createPage);
+getData(createPage, finishPokeData);
+
+// callback2
+function finishPokeData(pokemons, allMoves) {
+
+    for(let poke in pokemons){
+
+        for(const move in allMoves){
+
+            if(pokemons[poke].allMoves.includes(move)){
+    
+                if(allMoves[move].power !== null){
+                    pokemons[poke].pokeMoves[move] = {
+                        name : allMoves[move].name,
+                        type: allMoves[move].type.name,
+                        atkType: allMoves[move].damage_class.name,
+                        damage: allMoves[move].power,
+                        powerpoints: allMoves[move].pp,
+                        accuracy: allMoves[move].accuracy
+                    }
+                }
+            }
+        }
+    }
+
+    return pokemons;
+}
+
 
 // -------------------------------------------------
 // -------------------------------------------------
 // -------------------------------------------------
-// Selection
+// Selection (callback)
 // -------------------------------------------------
 // -------------------------------------------------
 // -------------------------------------------------

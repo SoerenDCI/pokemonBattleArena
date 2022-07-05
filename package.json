@@ -2,10 +2,10 @@
   "name": "pb-final02-pokemon-soerendci",
   "version": "1.0.0",
   "description": "Try to make a simplified version of pokemon!",
-  "main": "index.js",
   "scripts": {
     "sass-build": "sass src/scss:src/css",
-		"sass-watch": "sass -w src/scss:src/css"
+    "sass-watch": "sass -w src/scss:src/css",
+    "build": "parcel build index.html --public-url ./"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,29 @@
   },
   "homepage": "https://github.com/FbW-WD-22-D01/pb-final02-pokemon-SoerenDCI#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.1.1"
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@parcel/utils": "^2.6.2",
+    "parcel": "^2.6.2",
+    "parcel-namer-rewrite": "^2.0.0-rc.2"
+  },
+  "targets": {
+    "default": {
+      "distDir": "build"
+    },
+    "build": {
+      "distDir": "build"
+    }
+  },
+  "parcel-namer-rewrite": {
+    "chain": "@parcel/namer-default",
+    "rules": {
+      "(.*).css": "css/$1{.hash}.css",
+      "(.*).js": "js/$1{.hash}.js",
+      "(.*).(jpg|png|gif|svg|webp|avif)": "assets/img1/$1.$2"
+    }
   }
+
 }

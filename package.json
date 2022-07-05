@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Try to make a simplified version of pokemon!",
   "scripts": {
-    "sass-build": "sass src/scss:src/css",
-    "sass-watch": "sass -w src/scss:src/css",
-    "build": "parcel build index.html --public-url ./"
+    "build": "parcel build index.html --public-url ./ --dist-dir docs"
   },
   "repository": {
     "type": "git",
@@ -23,17 +21,11 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.2",
     "@parcel/utils": "^2.6.2",
     "parcel": "^2.6.2",
-    "parcel-namer-rewrite": "^2.0.0-rc.2"
-  },
-  "targets": {
-    "default": {
-      "distDir": "build"
-    },
-    "build": {
-      "distDir": "build"
-    }
+    "parcel-namer-rewrite": "^2.0.0-rc.2",
+    "sass": "^1.53.0"
   },
   "parcel-namer-rewrite": {
     "chain": "@parcel/namer-default",
@@ -43,5 +35,4 @@
       "(.*).(jpg|png|gif|svg|webp|avif)": "assets/img1/$1.$2"
     }
   }
-
 }

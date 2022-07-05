@@ -2,4 +2,3 @@ node_modules
 src/css
 test.js
 .vscode
-build

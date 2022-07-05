@@ -1,3 +1,4 @@
+import './src/scss/main.scss';
 // Function
 function capitalizeLetters(str) {
     let local;
